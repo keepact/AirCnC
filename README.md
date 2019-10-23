@@ -1,4 +1,4 @@
-# AirCnc App
+# AirCnC App
 
 This project was developed at Rocketseat OmniStack week
 
