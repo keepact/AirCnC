@@ -1,6 +1,3 @@
-# Airbnb
-An app with the Airbnb interface
-
 # AirCnc App
 
 This project was developed at Rocketseat OmniStack week
