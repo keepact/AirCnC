@@ -9,3 +9,4 @@ YellowBox.ignoreWarnings([
 export default function App() {
   return <Routes />
 }
+
