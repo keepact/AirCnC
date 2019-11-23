@@ -43,7 +43,11 @@ function SpotList({ tech, navigation }) {
         <Title>
           Empresas que usam <Bold>{tech}</Bold>
         </Title>
-      ) : null}
+      ) : (
+        <Title>
+          Empresa <Bold>{tech}</Bold> não encontrada
+        </Title>
+      )}
       <List
         data={spots}
         keyExtractor={spot => spot._id}
