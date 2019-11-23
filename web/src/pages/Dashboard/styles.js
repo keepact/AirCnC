@@ -48,11 +48,11 @@ export const Notifications = styled.ul`
       cursor: pointer;
 
       &[accept] {
-        color: #84C870;
+        color: #84c870;
       }
 
-      &[reject='reject'] {
-        color: #E55E5E;
+      &[reject] {
+        color: #e55e5e;
       }
     }
   }

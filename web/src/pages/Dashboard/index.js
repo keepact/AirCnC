@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import socketio from 'socket.io-client';
 import api from '../../services/api';
 
-import { Content } from '../../components/Container'
+import { Content } from '../../components/Container';
 import { SpotList, Notifications } from './styles';
 
 export default function Dashboard() {
@@ -11,26 +11,30 @@ export default function Dashboard() {
   const [requests, setRequests] = useState([]);
 
   const user_id = localStorage.getItem('user');
-  const socket = useMemo(() => socketio('http://localhost:3333', {
-    query: { user_id },
-  }), [user_id]);
+  const socket = useMemo(
+    () =>
+      socketio('http://localhost:3333', {
+        query: { user_id },
+      }),
+    [user_id]
+  );
 
   useEffect(() => {
     socket.on('booking_request', data => {
-      setRequests([ ...requests, data]);
-    })
+      setRequests([...requests, data]);
+    });
   }, [requests, socket]);
 
   useEffect(() => {
     async function loadSpots() {
       const user_id = localStorage.getItem('user');
       const response = await api.get('/dashboard', {
-        headers: { user_id }
-        });
+        headers: { user_id },
+      });
 
-        setSpots(response.data);
-      }
-      loadSpots();
+      setSpots(response.data);
+    }
+    loadSpots();
   }, []);
 
   async function handleAccept(id) {
@@ -42,19 +46,25 @@ export default function Dashboard() {
   async function handleReject(id) {
     await api.post(`/bookings/${id}/rejections`);
 
-      setRequests(requests.filter(request => request._id !== id));
+    setRequests(requests.filter(request => request._id !== id));
   }
 
   return (
     <Content>
       <Notifications>
         {requests.map(request => (
-          <li key ={request._id}>
+          <li key={request._id}>
             <p>
-              <strong>{request.user.email}</strong> está solicitando uma reserva em <strong>{request.spot.company}</strong> para a data: <strong>{request.date}</strong>
+              <strong>{request.user.email}</strong> está solicitando uma reserva
+              em <strong>{request.spot.company}</strong> para a data:{' '}
+              <strong>{request.date}</strong>
             </p>
-            <button accept onClick={() => handleAccept(request._id)}>ACEITAR</button>
-            <button reject onClick={() => handleReject(request._id)}>REJEITAR</button>
+            <button accept onClick={() => handleAccept(request._id)}>
+              ACEITAR
+            </button>
+            <button reject onClick={() => handleReject(request._id)}>
+              REJEITAR
+            </button>
           </li>
         ))}
       </Notifications>
@@ -69,8 +79,10 @@ export default function Dashboard() {
       </SpotList>
 
       <Link to="/new">
-        <button className="btn" type="button">Cadastrar novo spot</button>
+        <button className="btn" type="button">
+          Cadastrar novo spot
+        </button>
       </Link>
     </Content>
-  )
+  );
 }

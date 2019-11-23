@@ -8,10 +8,9 @@ import GlobalStyles from './styles/global';
 import { Container } from './components/Container/index';
 
 function App() {
-
   return (
     <Container>
-      <img src={logo} alt="AirCnc"/>
+      <img src={logo} alt="AirCnc" />
 
       <Routes />
       <GlobalStyles />
