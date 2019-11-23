@@ -41,6 +41,7 @@ function List() {
   async function handleSearch() {
     const techChosen = await newTech.split(',').map(t => t.trim());
 
+    await AsyncStorage.setItem('techs', newTech);
     setTechs(techChosen);
   }
 
