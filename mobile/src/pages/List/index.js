@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+
 import socketio from 'socket.io-client';
 import { Alert, ScrollView, AsyncStorage } from 'react-native';
 
@@ -8,7 +10,7 @@ import SpotList from '../../components/SpotList';
 
 import logo from '../../assets/logo.png';
 
-export default function List({ navigation }) {
+function List({ navigation }) {
   const [techs, setTechs] = useState([]);
 
   useEffect(() => {
@@ -26,8 +28,6 @@ export default function List({ navigation }) {
       });
     });
   }, []);
-
-  // [ReactJs, [Node.js]
 
   useEffect(() => {
     AsyncStorage.getItem('techs').then(storageTechs => {
@@ -50,3 +50,11 @@ export default function List({ navigation }) {
     </Container>
   );
 }
+
+List.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
+
+export default List;

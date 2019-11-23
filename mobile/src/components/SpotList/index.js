@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import PropTypes from 'prop-types';
+
 import { withNavigation } from 'react-navigation';
 
 import api from '../../services/api';
@@ -29,15 +31,19 @@ function SpotList({ tech, navigation }) {
     loadSpots();
   }, []);
 
+  const spotsSize = useMemo(() => spots.length, [spots]);
+
   function handleNavigate(id) {
     navigation.navigate('Book', { id });
   }
 
   return (
     <Container>
-      <Title>
-        Empresas que usam <Bold>{tech}</Bold>
-      </Title>
+      {tech && spotsSize > 0 ? (
+        <Title>
+          Empresas que usam <Bold>{tech}</Bold>
+        </Title>
+      ) : null}
       <List
         data={spots}
         keyExtractor={spot => spot._id}
@@ -57,5 +63,12 @@ function SpotList({ tech, navigation }) {
     </Container>
   );
 }
+
+SpotList.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+  tech: PropTypes.string.isRequired,
+};
 
 export default withNavigation(SpotList);
