@@ -3,7 +3,18 @@ import { withNavigation } from 'react-navigation';
 
 import api from '../../services/api';
 
-import { Container, Title, Bold, List, ListItem, Thumbnail, Company, Price, SubmitButton, ButtonText } from './styles';
+import {
+  Container,
+  Title,
+  Bold,
+  List,
+  ListItem,
+  Thumbnail,
+  Company,
+  Price,
+  SubmitButton,
+  ButtonText,
+} from './styles';
 
 function SpotList({ tech, navigation }) {
   const [spots, setSpots] = useState([]);
@@ -11,11 +22,11 @@ function SpotList({ tech, navigation }) {
   useEffect(() => {
     async function loadSpots() {
       const response = await api.get('/spots', {
-        params: { tech }
-        })
-        setSpots(response.data);
-      }
-      loadSpots();
+        params: { tech },
+      });
+      setSpots(response.data);
+    }
+    loadSpots();
   }, []);
 
   function handleNavigate(id) {
@@ -24,7 +35,9 @@ function SpotList({ tech, navigation }) {
 
   return (
     <Container>
-      <Title>Empresas que usam <Bold>{tech}</Bold></Title>
+      <Title>
+        Empresas que usam <Bold>{tech}</Bold>
+      </Title>
       <List
         data={spots}
         keyExtractor={spot => spot._id}
@@ -42,7 +55,7 @@ function SpotList({ tech, navigation }) {
         )}
       />
     </Container>
-  )
+  );
 }
 
 export default withNavigation(SpotList);

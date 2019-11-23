@@ -3,7 +3,6 @@ import styled from 'styled-components/native';
 export const Container = styled.KeyboardAvoidingView.attrs({
   behavior: 'padding',
 })`
-
   flex: 1;
   justify-content: center;
   align-items: center;
@@ -26,7 +25,6 @@ export const Input = styled.TextInput.attrs({
   autoCorrect: false,
   placeholderTextColor: '#999',
 })`
-
   border-width: 1;
   border-color: #ddd;
   padding: 0 20px;
@@ -46,8 +44,7 @@ export const SubmitButton = styled.TouchableOpacity`
 `;
 
 export const ButtonText = styled.Text`
-  color: #FFF;
+  color: #fff;
   font-weight: bold;
   font-size: 16px;
 `;
-

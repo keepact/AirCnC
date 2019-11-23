@@ -17,7 +17,6 @@ export const Input = styled.TextInput.attrs({
   autoCapitalize: 'words',
   autoCorrect: false,
 })`
-
   border-width: 1px;
   border-color: #ddd;
   padding: 0 20px;
