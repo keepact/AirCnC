@@ -1,20 +1,21 @@
 import React from 'react';
-import './App.css';
+
+import Routes from './routes';
 
 import logo from './assets/logo.svg';
 
-import Routes from './routes';
+import GlobalStyles from './styles/global';
+import { Container } from './components/Container/index';
 
 function App() {
 
   return (
-    <div className="container">
+    <Container>
       <img src={logo} alt="AirCnc"/>
 
-      <div className="content">
-        <Routes />
-      </div>
-    </div>
+      <Routes />
+      <GlobalStyles />
+    </Container>
   );
 }
 
