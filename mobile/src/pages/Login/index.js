@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { AsyncStorage, Platform, Image } from 'react-native';
 
 import api from '../../services/api';
@@ -14,17 +15,25 @@ import {
   ButtonText,
 } from './styles';
 
-export default function Login({ navigation }) {
+function Login({ navigation }) {
   const [email, setEmail] = useState('');
   const [techs, setTechs] = useState('');
 
-  // useEffect(() => {
-  //     AsyncStorage.getItem('user').then(user => {
-  //         if (user) {
-  //             navigation.navigate('List');
-  //         }
-  //     })
-  // }, []);
+  useEffect(() => {
+    AsyncStorage.getItem('techs').then(tech => {
+      if (tech) {
+        setTechs(tech);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    AsyncStorage.getItem('user').then(user => {
+      if (user) {
+        navigation.navigate('List');
+      }
+    });
+  }, []);
 
   async function handleSubmit() {
     const response = await api.post('/sessions', {
@@ -68,3 +77,11 @@ export default function Login({ navigation }) {
     </Container>
   );
 }
+
+Login.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
+
+export default Login;
