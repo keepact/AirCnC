@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+
 import api from '../../services/api';
 
 import { Form } from '../../components/Form';
-import { Content } from '../../components/Container'
+import { Content } from '../../components/Container';
 
-export default function Login({ history }) {
+function Login({ history }) {
   const [email, setEmail] = useState('');
 
   async function handleSubmit(event) {
@@ -14,7 +16,7 @@ export default function Login({ history }) {
 
     const { _id } = response.data;
 
-    localStorage.setItem('user',  _id);
+    localStorage.setItem('user', _id);
 
     history.push('/dashboard');
   }
@@ -22,7 +24,8 @@ export default function Login({ history }) {
   return (
     <Content>
       <p>
-        Ofereça <strong>spots</strong> para programadores e encontre <strong>talentos</strong> para sua empresa
+        Ofereça <strong>spots</strong> para programadores e encontre{' '}
+        <strong>talentos</strong> para sua empresa
       </p>
 
       <Form onSubmit={handleSubmit}>
@@ -35,8 +38,18 @@ export default function Login({ history }) {
           onChange={event => setEmail(event.target.value)}
         />
 
-        <button className="btn" type="submit">Entrar</button>
+        <button className="btn" type="submit">
+          Entrar
+        </button>
       </Form>
     </Content>
   );
 }
+
+Login.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
+
+export default Login;
