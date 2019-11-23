@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { Ionicons } from '@expo/vector-icons';
 
 import socketio from 'socket.io-client';
 import { Alert, ScrollView, AsyncStorage } from 'react-native';
 
 import Header from '../../components/Header';
 
-import { Container } from './styles';
+import { Container, Search, SearchInput, SearchButton } from './styles';
 
 import SpotList from '../../components/SpotList';
 
 function List() {
+  const [newTech, setNewTech] = useState('');
   const [techs, setTechs] = useState([]);
 
   useEffect(() => {
@@ -36,9 +38,26 @@ function List() {
     });
   }, []);
 
+  async function handleSearch() {
+    const techChosen = await newTech.split(',').map(t => t.trim());
+
+    setTechs(techChosen);
+  }
+
   return (
     <Container>
       <Header />
+      <Search>
+        <SearchInput
+          placeholder="Pesquise novas tecnologias"
+          autoCapitalize="words"
+          value={newTech}
+          onChangeText={setNewTech}
+        />
+        <SearchButton onPress={handleSearch}>
+          <Ionicons name="md-search" size={22} color="#fff" />
+        </SearchButton>
+      </Search>
       <ScrollView>
         {techs.map(tech => (
           <SpotList key={tech} tech={tech} />
