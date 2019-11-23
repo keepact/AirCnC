@@ -12,32 +12,28 @@ const app = express();
 const server = http.Server(app);
 const io = socketio(server);
 
-
-mongoose.connect('mongodb+srv://OminiStack:OminiStack@oministack-indr6.mongodb.net/semana09?retryWrites=true&w=majority', {
+mongoose.connect(
+  'mongodb+srv://OminiStack:OminiStack@oministack-indr6.mongodb.net/semana09?retryWrites=true&w=majority',
+  {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-})
+  }
+);
 
 const connectedUsers = {};
 
 io.on('connection', socket => {
-    const { user_id } = socket.handshake.query;
+  const { user_id } = socket.handshake.query;
 
-    connectedUsers[user_id] = socket.id;
+  connectedUsers[user_id] = socket.id;
 });
 
-app.use(( req, res, next ) => {
-    req.io = io;
-    req.connectedUsers = connectedUsers;
+app.use((req, res, next) => {
+  req.io = io;
+  req.connectedUsers = connectedUsers;
 
-    return next();
-})
-
-// GET, POST, PUT, DELETE
-
-// res.query = Acessar query params (para filtros)
-// res.params = Acessar route params (para edição e delete)
-// req.body = Acessar corpo da requisição (para criação e edição)
+  return next();
+});
 
 app.use(cors());
 app.use(express.json());
