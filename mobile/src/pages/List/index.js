@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 
 import socketio from 'socket.io-client';
 import { Alert, ScrollView, AsyncStorage } from 'react-native';
 
-import { Container, Logo, HomeButton } from './styles';
+import Header from '../../components/Header';
+
+import { Container } from './styles';
 
 import SpotList from '../../components/SpotList';
 
-import logo from '../../assets/logo.png';
-
-function List({ navigation }) {
+function List() {
   const [techs, setTechs] = useState([]);
 
   useEffect(() => {
@@ -39,9 +38,7 @@ function List({ navigation }) {
 
   return (
     <Container>
-      <HomeButton onPress={() => navigation.navigate('Login')}>
-        <Logo source={logo} />
-      </HomeButton>
+      <Header />
       <ScrollView>
         {techs.map(tech => (
           <SpotList key={tech} tech={tech} />
@@ -50,11 +47,5 @@ function List({ navigation }) {
     </Container>
   );
 }
-
-List.propTypes = {
-  navigation: PropTypes.shape({
-    navigate: PropTypes.func.isRequired,
-  }).isRequired,
-};
 
 export default List;

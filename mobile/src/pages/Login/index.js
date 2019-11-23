@@ -49,6 +49,7 @@ function Login({ navigation }) {
   }
 
   return (
+    // eslint-disable-next-line eqeqeq
     <Container enabled={Platform.OS == 'ios'}>
       <Image source={logo} />
 
