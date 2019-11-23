@@ -5,60 +5,66 @@ import api from '../../services/api';
 
 import logo from '../../assets/logo.png';
 
-import { Container, Form, Label, Input, SubmitButton, ButtonText } from './styles';
+import {
+  Container,
+  Form,
+  Label,
+  Input,
+  SubmitButton,
+  ButtonText,
+} from './styles';
 
 export default function Login({ navigation }) {
-    const [email, setEmail] = useState('');
-    const [techs, setTechs] = useState('');
+  const [email, setEmail] = useState('');
+  const [techs, setTechs] = useState('');
 
-    // useEffect(() => {
-    //     AsyncStorage.getItem('user').then(user => {
-    //         if (user) {
-    //             navigation.navigate('List');
-    //         }
-    //     })
-    // }, []);
+  // useEffect(() => {
+  //     AsyncStorage.getItem('user').then(user => {
+  //         if (user) {
+  //             navigation.navigate('List');
+  //         }
+  //     })
+  // }, []);
 
-    async function handleSubmit() {
-        const response = await api.post('/sessions', {
-            email
-        })
+  async function handleSubmit() {
+    const response = await api.post('/sessions', {
+      email,
+    });
 
-        const { _id } = response.data;
+    const { _id } = response.data;
 
-        await AsyncStorage.setItem('user', _id);
-        await AsyncStorage.setItem('techs', techs);
+    await AsyncStorage.setItem('user', _id);
+    await AsyncStorage.setItem('techs', techs);
 
-        navigation.navigate('List');
-    }
+    navigation.navigate('List');
+  }
 
-    return (
-        <Container enabled={Platform.OS == 'ios'}>
-            <Image source={logo} />
+  return (
+    <Container enabled={Platform.OS == 'ios'}>
+      <Image source={logo} />
 
-            <Form>
-                <Label>Seu Email *</Label>
-                <Input
-                    placeholder="Seu email"
-                    keyboardType="email-address"
-                    autoCapitalize="none"
-                    value={email}
-                    onChangeText={setEmail}
+      <Form>
+        <Label>Seu Email *</Label>
+        <Input
+          placeholder="Seu email"
+          keyboardType="email-address"
+          autoCapitalize="none"
+          value={email}
+          onChangeText={setEmail}
+        />
 
-                />
-            
-                <Label>Tecnologias *</Label>
-                <Input
-                    placeholder="Tecnologias de interesse"
-                    autoCapitalize="words"
-                    value={techs}
-                    onChangeText={setTechs}
-                />
+        <Label>Tecnologias *</Label>
+        <Input
+          placeholder="Tecnologias de interesse"
+          autoCapitalize="words"
+          value={techs}
+          onChangeText={setTechs}
+        />
 
-                <SubmitButton onPress={handleSubmit}>
-                    <ButtonText>Encontrar spots</ButtonText>
-                </SubmitButton>
-            </Form>
-        </Container>
-    )
+        <SubmitButton onPress={handleSubmit}>
+          <ButtonText>Encontrar spots</ButtonText>
+        </SubmitButton>
+      </Form>
+    </Container>
+  );
 }

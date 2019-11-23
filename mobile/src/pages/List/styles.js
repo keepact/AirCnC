@@ -13,5 +13,4 @@ export const Logo = styled.Image`
   margin-top: 10px;
 `;
 
-export const HomeButton = styled(RectButton)`
-`;
+export const HomeButton = styled(RectButton)``;
