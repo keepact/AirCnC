@@ -1,6 +1,6 @@
 const express = require('express');
 const multer = require('multer');
-const uploadConfig = require('./config/upload');
+const uploadConfig = require('./config/Upload');
 
 const SessionController = require('./controllers/SessionController');
 const SpotController = require('./controllers/SpotController');
