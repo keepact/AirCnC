@@ -57,3 +57,8 @@ export const ButtonText = styled.Text`
   font-weight: bold;
   font-size: 16px;
 `;
+
+export const AnimationContainer = styled.View`
+  align-items: center;
+  justify-content: center;
+`;
