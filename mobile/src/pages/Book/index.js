@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Alert, AsyncStorage } from 'react-native';
+
+import Header from '../../components/Header';
 
 import api from '../../services/api';
 
@@ -12,7 +15,7 @@ import {
   ButtonText,
 } from './styles';
 
-export default function Book({ navigation }) {
+function Book({ navigation }) {
   const [date, setDate] = useState('');
   const id = navigation.getParam('id');
 
@@ -39,6 +42,7 @@ export default function Book({ navigation }) {
 
   return (
     <Container>
+      <Header />
       <Label>Data de Interesse *</Label>
       <Input
         placeholder="Qual data você quer reservar?"
@@ -55,3 +59,12 @@ export default function Book({ navigation }) {
     </Container>
   );
 }
+
+Book.propTypes = {
+  navigation: PropTypes.shape({
+    getParam: PropTypes.func.isRequired,
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
+
+export default Book;
