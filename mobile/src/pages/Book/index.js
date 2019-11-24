@@ -6,7 +6,6 @@ import * as Localization from 'expo-localization';
 import moment from 'moment';
 import 'moment/min/locales';
 
-import DatePicker from '../../components/DatePicker';
 import Header from '../../components/Header';
 
 import api from '../../services/api';
@@ -22,6 +21,11 @@ import {
 const deviceLanguage = Localization.locale.replace(/_/g, '-').toLowerCase();
 
 moment.locale([deviceLanguage, 'pt-br']);
+
+const DatePicker =
+  Platform.OS === 'ios'
+    ? require('../../components/DatePickerIOS')
+    : require('../../components/DatePickerAndroid');
 
 function Book({ navigation }) {
   const [date, setDate] = useState(Platform.OS === 'ios' ? new Date() : '');
