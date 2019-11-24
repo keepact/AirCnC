@@ -71,7 +71,9 @@ export default function Dashboard() {
       <SpotList>
         {spots.map(spot => (
           <li key={spot._id}>
-            <header style={{ backgroundImage: `url(${spot.thumbnail_url})` }} />
+            <header
+              style={{ backgroundImage: `url('${spot.thumbnail_url}')` }}
+            />
             <strong>{spot.company}</strong>
             <span>{spot.price ? `R$${spot.price}/dia` : 'Gratuito'}</span>
           </li>
