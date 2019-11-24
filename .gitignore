@@ -4,7 +4,7 @@
 
 /backend/node_modules
 /backend/uploads
-/backend/.DS_Store
+backend/.DS_Store
 
 ## Mobile Rules
 
@@ -45,3 +45,4 @@
 /web/npm-debug.log*
 /web/yarn-debug.log*
 /web/yarn-error.log*
+mobile/yarn-error.log
