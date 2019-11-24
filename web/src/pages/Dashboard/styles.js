@@ -40,18 +40,24 @@ export const Notifications = styled.ul`
     font-size: 16px;
     line-height: 24px;
 
+    p {
+      font-size: 20px;
+      margin-bottom: 0;
+    }
+
     button {
       margin-right: 10px;
       border: 0;
       font-weight: bold;
       margin-top: 10px;
       cursor: pointer;
+      text-transform: uppercase;
 
-      &[accept] {
+      &[class='accept'] {
         color: #84c870;
       }
 
-      &[reject] {
+      &[class='reject'] {
         color: #e55e5e;
       }
     }
