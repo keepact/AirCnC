@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+import { Alert, AsyncStorage, Platform } from 'react-native';
 import PropTypes from 'prop-types';
-import { Alert, AsyncStorage } from 'react-native';
 
+import * as Localization from 'expo-localization';
+import moment from 'moment';
+import 'moment/min/locales';
+
+import DatePicker from '../../components/DatePicker';
 import Header from '../../components/Header';
 
 import api from '../../services/api';
@@ -9,14 +14,17 @@ import api from '../../services/api';
 import {
   Container,
   Label,
-  Input,
   SubmitButton,
   CancelButton,
   ButtonText,
 } from './styles';
 
+const deviceLanguage = Localization.locale.replace(/_/g, '-').toLowerCase();
+
+moment.locale([deviceLanguage, 'pt-br']);
+
 function Book({ navigation }) {
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState(Platform.OS === 'ios' ? new Date() : '');
   const id = navigation.getParam('id');
 
   async function handleSubmit() {
@@ -44,10 +52,11 @@ function Book({ navigation }) {
     <Container>
       <Header />
       <Label>Data de Interesse *</Label>
-      <Input
-        placeholder="Qual data você quer reservar?"
-        value={date}
-        onChangeText={setDate}
+      <DatePicker
+        date={date}
+        onDateChange={setDate}
+        locale={deviceLanguage}
+        moment={moment}
       />
       <SubmitButton onPress={handleSubmit}>
         <ButtonText>Solicitar reserva</ButtonText>
