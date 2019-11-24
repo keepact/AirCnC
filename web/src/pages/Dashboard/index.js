@@ -59,11 +59,19 @@ export default function Dashboard() {
               em <strong>{request.spot.company}</strong> para a data:{' '}
               <strong>{request.date}</strong>
             </p>
-            <button accept onClick={() => handleAccept(request._id)}>
-              ACEITAR
+            <button
+              type="button"
+              className="accept"
+              onClick={() => handleAccept(request._id)}
+            >
+              Aceitar
             </button>
-            <button reject onClick={() => handleReject(request._id)}>
-              REJEITAR
+            <button
+              type="button"
+              className="reject"
+              onClick={() => handleReject(request._id)}
+            >
+              Rejeitar
             </button>
           </li>
         ))}
