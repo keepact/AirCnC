@@ -33,14 +33,16 @@ It is an application to rent spaces in programming companies so other programmer
 
 
 ## libs used:
-  
-  <strong>Web</strong>: react-router-dom, axios, styled-components, prop-types
+    
+<strong>Web</strong>: react-router-dom, axios, styled-components, prop-types
+
+<strong>Mobile</strong> - axios, expo, styled-components, lottie-react-native, react-datepicker, expo-localization, prop-types, react-navigation and moment
+
+<strong>Backend</strong> - express, mongoose, nodemon, multer, socket.io and cors
+
+<strong>All</strong> - eslint, prettier and socket.io
   
-  <strong>Mobile</strong>: axios, expo, styled-components, lottie-react-native, react-datepicker, expo-localization, prop-types, react-navigation and moment
   
-  <strong>Backend</strong>: express, mongoose, nodemon, multer, socket.io and cors
-  
-  <strong>All</strong>: eslint, prettier and socket.io
   
 ## Database:
 
