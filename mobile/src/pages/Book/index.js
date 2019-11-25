@@ -24,8 +24,8 @@ moment.locale([deviceLanguage, 'pt-br']);
 
 const DatePicker =
   Platform.OS === 'ios'
-    ? require('../../components/DatePickerIOS')
-    : require('../../components/DatePickerAndroid');
+    ? require('../../components/DatePickerIOS').default
+    : require('../../components/DatePickerAndroid').default;
 
 function Book({ navigation }) {
   const [date, setDate] = useState(Platform.OS === 'ios' ? new Date() : '');
