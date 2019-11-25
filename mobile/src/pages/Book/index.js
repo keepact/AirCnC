@@ -37,7 +37,7 @@ function Book({ navigation }) {
     await api.post(
       `/spots/${id}/bookings`,
       {
-        date,
+        date: Platform.OS === 'ios' ? moment(date).format('LL') : date,
       },
       {
         headers: { user_id },
