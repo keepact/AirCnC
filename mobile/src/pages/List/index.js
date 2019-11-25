@@ -43,6 +43,7 @@ function List() {
 
     await AsyncStorage.setItem('techs', newTech);
     setTechs(techChosen);
+    setNewTech('');
   }
 
   return (
@@ -52,6 +53,7 @@ function List() {
         <SearchInput
           placeholder="Pesquise novas tecnologias"
           autoCapitalize="words"
+          autoCorrect={false}
           value={newTech}
           onChangeText={setNewTech}
         />
