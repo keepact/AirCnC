@@ -25,11 +25,11 @@ It is an application to rent spaces in programming companies so other programmer
 
 <strong>Mobile</strong>:
 
-<strong>1</strong> - Login
+<strong>1</strong> - Login with search parameters for clients/programmers
 
-<strong>2</strong> - List of all spaces
+<strong>2</strong> - List of all spaces available
 
-<strong>3</strong> - DatePicker with confirmation button
+<strong>3</strong> - DatePicker with confirmation button for Booking
 
 
 ## libs used:
