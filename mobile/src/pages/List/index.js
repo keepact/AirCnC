@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 
 import socketio from 'socket.io-client';
-import { Alert, ScrollView, AsyncStorage } from 'react-native';
+import { Alert, ScrollView, AsyncStorage, Keyboard } from 'react-native';
 
 import Header from '../../components/Header';
 
@@ -44,6 +44,7 @@ function List() {
     await AsyncStorage.setItem('techs', newTech);
     setTechs(techChosen);
     setNewTech('');
+    Keyboard.dismiss();
   }
 
   return (
