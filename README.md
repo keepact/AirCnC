@@ -8,7 +8,7 @@ Application developed during Rocketseats OmniStack Week with some modifications 
 ## App Screen
  
  <p align="center">
-  <img alt="GitHub language count" src="">
+  <img alt="GitHub language count" src="https://github.com/keepact/AirCnC/blob/master/app-screen.jpg">
  </p>
  
 ## What is this application about?
@@ -19,9 +19,17 @@ It is an application to rent spaces in programming companies so other programmer
 
 <strong>1</strong> - Login
 
-<strong>2</strong> - List of all spaces
+<strong>2</strong> - Dashboard
 
 <strong>3</strong> - Registration of companies with free spaces 
+
+<strong>Mobile</strong>:
+
+<strong>1</strong> - Login
+
+<strong>2</strong> - List of all spaces
+
+<strong>3</strong> - DatePicker with confirmation button
 
 
 ## libs used:
