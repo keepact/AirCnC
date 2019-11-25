@@ -1,6 +1,6 @@
-# DeliveryApp
+# AirCnc
 
-Delivery Management Application
+Rental Management Application
 
 Application developed during Rocketseats OmniStack Week with some modifications made during my journey with JS.
 
@@ -34,11 +34,13 @@ It is an application to rent spaces in programming companies so other programmer
 
 ## libs used:
   
-  <strong>Frontend</strong>: react-router-dom, axios, styled-components, react-lottie, react-datepicker, react-toastify, prop-types, react-geocode, react-google-maps, react-places-autocomplete, polished and @rocketseat/unform
+  <strong>Web</strong>: react-router-dom, axios, styled-components, prop-types
   
-  <strong>Backend</strong>: express, sequelize, sucrase, nodemon, cors, pg, pg-hstore and dotenv
+  <strong>Mobile</strong>: axios, expo, styled-components, lottie-react-native, react-datepicker, expo-localization, prop-types, react-navigation and moment
   
-  <strong>Both</strong>: date-fns, Yup, Eslint, Prettier.
+  <strong>Backend</strong>: express, mongoose, nodemon, multer, socket.io and cors
+  
+  <strong>All</strong>: eslint, prettier and socket.io
   
 ## Database:
 
@@ -46,7 +48,7 @@ It is an application to rent spaces in programming companies so other programmer
  
 ## Javascript Project:
  
- Node and React JS.
+ Node, React and React native
 
 ## Scripts
 
